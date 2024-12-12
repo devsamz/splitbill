@@ -5,29 +5,17 @@
 
 ## Descripion
 
-This is an ERC-20 called `Split Bill Token` with symbol `SBT`. The Contract inherits OpenZeppelin ERC20 standard, with extra implementation to mint, burn and transfer.
-
-## Getting Started
-
-### Executing program
-
-To run this program, you can use Remix, an online Solidity IDE. To get started, go to the Remix website at https://remix.ethereum.org/.
-
-Once you are on the Remix website, create a new file by clicking on the "+" icon in the left-hand sidebar. Save the file with a .sol extension (e.g., HelloWorld.sol). Copy and paste the code into the file
-
-
-To compile the code, click on the "Solidity Compiler" tab in the left-hand sidebar. Make sure the "Compiler" option is set to "0.8.20" (or another compatible version), and then click on the "Compile token.sol" button.
-
-Once the code is compiled, you can deploy the contract by clicking on the "Deploy & Run Transactions" tab in the left-hand sidebar. Select the "SplitBill" contract from the dropdown menu, and then click on the "Deploy" button.
-
-Once the contract is deployed, you can interact with it by calling the mint, burn and transfer function.
-
+This is an ERC-20 called `SplitBillToken` with symbol `SBT`. The Contract inherits OpenZeppelin ERC20 standard, with extra implementation to mint, burn and transfer.
 
 ## Contract Details
 
+**Contract Address:** https://sepolia.etherscan.io/address/0x4b7856f3a829a14cb93e237d23e4fbde6be4e79c
+
+**Loom 2 (etherscan):** https://www.loom.com/share/c9f44b40c8e54fa2b163886ba2ceb650?sid=42dc1f0d-2d36-489f-926e-998a25580bde
+
 ### Constructor
 
-During Constructor time, The ERC-20 token name and symbol is set. Also the deployer become the owner of the contract.
+Upon deploying the contract, The ERC-20 token name and symbol is set. Also the deployer become the owner of the contract.
 
 ### mint
 

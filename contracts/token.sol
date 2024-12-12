@@ -1,31 +1,30 @@
-// SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract SplitBillToken is ERC20 {
-    address public owner;
+contract CustomToken is ERC20 {
 
+    address public owner;
     modifier onlyOwner() {
         require(msg.sender == owner, "Only owner can mint");
         _;
     }
 
-    constructor() ERC20("SplitBillToken", "SBT") {
+    event TokensMinted(address indexed recipient, uint256 amount);
+    event TokensBurned(address indexed account, uint256 amount);
+
+    constructor(string memory name, string memory symbol) ERC20(name, symbol) {
         owner = msg.sender;
     }
 
-    function mint(address _to, uint256 _amount) public onlyOwner {
-        _mint(_to, _amount * (10 ** decimals()));
+    function mint(address to, uint256 amount) external onlyOwner {
+        _mint(to, amount);
+        emit TokensMinted(to, amount);
     }
 
-    function transfer(address to, uint256 value) public virtual override returns (bool success) {
-        require(balanceOf(msg.sender) >= value, "Insufficient balance");
-        success = super.transfer(to, value);
-    }
-
-    function burn(uint256 _amount) public {
-        require(balanceOf(msg.sender) >= _amount, "Insufficient balance");
-        _burn(msg.sender, _amount);
+    function burn(uint256 amount) external {
+        _burn(msg.sender, amount);
+        emit TokensBurned(msg.sender, amount);
     }
 }
