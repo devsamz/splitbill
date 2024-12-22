@@ -27,4 +27,9 @@ contract CustomToken is ERC20 {
         _burn(msg.sender, amount);
         emit TokensBurned(msg.sender, amount);
     }
+
+    function transfer(address to, uint value) public virtual override returns (bool success) {
+        require(balanceOf(msg.sender) >= value, "Insufficient balance");
+        success = super.transfer(to, value);
+    }
 }
